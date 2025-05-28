@@ -6,11 +6,13 @@ import Mentor from "./Mentor/Mentor";
 import Students from "./Students/Students";
 import Newsletter from "./Newsletter/Newsletter";
 import Footer from "./Footer/Footer";
+import OpeningHours from "./Opening Hours/OpeningHours";
 
 export {
   Banner,
   Navbar,
   Companies,
+  OpeningHours,
   Tabs,
   Mentor,
   Students,

@@ -11,7 +11,7 @@ const products: ProductType[] = [
   {
     id: 1,
     section: "Company",
-    link: ["About us", "Blog", "Contact us", "Pricing", "Testimonials"],
+    link: ["About us", "Contact us", "Opening Hours", "Services"],
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const footer = () => {
           {/* COLUMN-1 */}
 
           <div className="col-span-4">
-            <img src={"/assets/logo/Logo2.svg"} alt="logo" className="pb-4" />
+            {/* <img src={"/assets/logo/img.webp"} alt="logo" className="pb-4" width={60} height={60} /> */}
             <h3 className="text-white text-lg font-medium leading-9 mb-4 lg:mb-20">
               {" "}
               Level up your skills, and get dream <br /> job with passion.{" "}
@@ -42,32 +42,20 @@ const footer = () => {
             <div className="flex gap-4">
               <Link href="/">
                 <img
-                  src={"/assets/footer/insta.svg"}
+                  src={"https://img.icons8.com/color/48/instagram-new--v1.png"}
                   alt="instagram"
                   className="footer-icons"
                 />
               </Link>
+          
               <Link href="/">
                 <img
-                  src={"/assets/footer/dribble.svg"}
-                  alt="dribble"
+                  src={"https://img.icons8.com/fluency/48/facebook-new.png"}
+                  alt="facebook-new"
                   className="footer-icons"
                 />
               </Link>
-              <Link href="/">
-                <img
-                  src={"/assets/footer/twitter.svg"}
-                  alt="twitter"
-                  className="footer-icons"
-                />
-              </Link>
-              <Link href="/">
-                <img
-                  src={"/assets/footer/youtube.svg"}
-                  alt="youtube"
-                  className="footer-icons"
-                />
-              </Link>
+              
             </div>
           </div>
 
@@ -124,11 +112,7 @@ const footer = () => {
 
       <div className="pb-24 px-4">
         <h3 className="text-center text-offwhite">
-          @2023 - All Rights Reserved by{" "}
-          <Link href="https://adminmart.com/" target="_blank">
-            {" "}
-            Adminmart.com
-          </Link>
+          @2025 - All Rights Reserved by Redfly Academy
         </h3>
       </div>
     </div>

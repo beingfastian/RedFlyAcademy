@@ -94,7 +94,7 @@ const Contactusform = () => {
                       alt="Your Company"
                     />
                     <p className="mb-8 lg:mb-16 mt-8 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
-                      Contact us now? Want to send us a feedback?
+                      Want to send us a feedback?
                     </p>
                     <form
                       action="#"

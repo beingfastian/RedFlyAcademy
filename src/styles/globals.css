@@ -1,4 +1,3 @@
-/* Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -100,4 +99,26 @@ html:not([data-scroll="0"]) .navbar {
 
 .space-links:hover {
   letter-spacing: 1px;
+}
+
+/* Animated soft red background for About Us section */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated {
+  background: linear-gradient(120deg, #ffdde1 0%, #fba7b7 50%, #fff1f1 100%);
+  background-size: 200% 200%;
+  animation: gradientMove 18s ease-in-out infinite;
+  filter: blur(0.5px);
+  opacity: 0.93;
+  z-index: 0;
 }
