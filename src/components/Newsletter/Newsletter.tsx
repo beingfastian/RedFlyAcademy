@@ -1,3 +1,4 @@
+import Image from "next/image";
 const Newsletter = () => {
   return (
     <div id="join-section" className="-mt-32 relative z-10">
@@ -26,7 +27,7 @@ const Newsletter = () => {
           {/* COLUMN-2 */}
           <div className="hidden sm:block">
             <div className="float-right -mt-32">
-              <img src={"/assets/newsletter/Free.svg"} alt="bgimg" />
+              <Image src={"/assets/newsletter/Free.svg"} alt="bgimg" />
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ import Signdialog from "./Signdialog";
 import Registerdialog from "./Registerdialog";
 import Contactus from "./Contactus";
 import { Students } from "..";
-
+import Image from "next/image";
 interface NavigationItem {
   name: string;
   href: string;
@@ -38,14 +38,14 @@ const Navbar = () => {
             <div className="flex items-center flex-1">
               <div className="flex-shrink-0 flex items-center">
                 {/* Large Logo */}
-                <img
+                <Image
                   className="hidden lg:block rounded-2xl border-4 border-purple-200 shadow-lg"
                   src="/assets/logo/img.webp"
                   alt="Courses-Logo"
                   style={{ width: "120px", height: "120px", maxWidth: "600px", maxHeight: "600px" }}
                 />
                 {/* Mobile Logo */}
-                <img
+                <Image
                   className="block lg:hidden rounded-xl border-2 border-purple-200 shadow"
                   src="/assets/logo/img.webp"
                   alt="Courses-Logo"

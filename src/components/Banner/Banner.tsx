@@ -1,6 +1,6 @@
 import Dropdownone from "./Dropdownone";
 import Dropdowntwo from "./Dropdowntwo";
-
+import Image from 'next/image';
 const Banner = () => {
   return (
     <main className="banner-image">
@@ -17,27 +17,27 @@ const Banner = () => {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <div className="hidden sm:block -space-x-2 overflow-hidden">
                 {/* Success Stories - Student Images */}
-                <img
+                <Image
                   className="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt="Student success story"
                 />
-                <img
+                <Image
                   className="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                   src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt="Student success story"
                 />
-                <img
+                <Image
                   className="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                   src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt="Student success story"
                 />
-                <img
+                <Image
                   className="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                   src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt="Student success story"
                 />
-                <img
+                <Image
                   className="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt="Student success story"
@@ -46,7 +46,7 @@ const Banner = () => {
               <div className="bannerBorder sm:pl-8">
                 <div className="flex justify-center sm:justify-start">
                   <h3 className="text-2xl font-semibold mr-2">4.9</h3>
-                  <img src={"/assets/banner/Stars.svg"} alt="stars-icon" />
+                  <Image src={"/assets/banner/Stars.svg"} alt="stars-icon" />
                 </div>
                 <div>
                   <h3 className="text-sm">Trusted by thousands of students.</h3>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 // MIDDLE LINKS DATA
 interface ProductType {
   id: number;
@@ -34,23 +34,23 @@ const footer = () => {
           {/* COLUMN-1 */}
 
           <div className="col-span-4">
-            {/* <img src={"/assets/logo/img.webp"} alt="logo" className="pb-4" width={60} height={60} /> */}
+            {/* <Image src={"/assets/logo/Image.webp"} alt="logo" className="pb-4" width={60} height={60} /> */}
             <h3 className="text-white text-lg font-medium leading-9 mb-4 lg:mb-20">
               {" "}
               Level up your skills, and get dream <br /> job with passion.{" "}
             </h3>
             <div className="flex gap-4">
               <Link href="/">
-                <img
-                  src={"https://img.icons8.com/color/48/instagram-new--v1.png"}
+                <Image
+                  src={"https://Image.icons8.com/color/48/instagram-new--v1.png"}
                   alt="instagram"
                   className="footer-icons"
                 />
               </Link>
           
               <Link href="/">
-                <img
-                  src={"https://img.icons8.com/fluency/48/facebook-new.png"}
+                <Image
+                  src={"https://Image.icons8.com/fluency/48/facebook-new.png"}
                   alt="facebook-new"
                   className="footer-icons"
                 />
@@ -100,7 +100,7 @@ const footer = () => {
                   type="submit"
                   className="p-1 focus:outline-none focus:shadow-outline"
                 >
-                  <img src={"/assets/footer/inputIcon.svg"} alt="inputicon" />
+                  <Image src={"/assets/footer/inputIcon.svg"} alt="inputicon" />
                 </button>
               </div>
             </div>

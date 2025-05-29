@@ -111,7 +111,7 @@ const Services = () => {
         </h2>
         <p className="mt-4 text-gray-600 text-lg">
           At Red Fly Academy, we know that the best way to help your child learn is through personalized, 
-          interactive learning. That's why we offer our online tuition program, which allows you to complete 
+          interactive learning. That&apos;s why we offer our online tuition program, which allows you to complete 
           your courses from the comfort of your home.
         </p>
       </div>

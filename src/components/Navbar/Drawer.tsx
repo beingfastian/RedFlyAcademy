@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-
+import Image from "next/image";
 interface DrawerProps {
   children: ReactNode;
   isOpen: boolean;
@@ -25,7 +25,7 @@ const Drawer = ({ children, isOpen, setIsOpen }: DrawerProps) => {
       >
         <article className="relative w-340px max-w-lg pb-10 flex flex-col space-y-6 h-full">
           <header className="p-4 flex items-center">
-            <img
+            <Image
               className="h-30px w-30px mx-auto"
               src={"/assets/logo/Logo.svg"}
               alt="Courses-Logo"
