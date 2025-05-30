@@ -42,13 +42,16 @@ const Navbar = () => {
                   className="hidden lg:block rounded-2xl border-4 border-purple-200 shadow-lg"
                   src="/assets/logo/img.webp"
                   alt="Courses-Logo"
+                  width={120}  // Add this
+                  height={120} // Add this
                   style={{ width: "120px", height: "120px", maxWidth: "600px", maxHeight: "600px" }}
                 />
-                {/* Mobile Logo */}
                 <Image
                   className="block lg:hidden rounded-xl border-2 border-purple-200 shadow"
                   src="/assets/logo/img.webp"
                   alt="Courses-Logo"
+                  width={60}   // Add this
+                  height={60}  // Add this
                   style={{ width: "60px", height: "60px", maxWidth: "600px", maxHeight: "600px" }}
                 />
               </div>

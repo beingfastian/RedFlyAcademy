@@ -83,6 +83,8 @@ const BookFreeTrialForm = () => {
                       className="mx-auto h-12 w-auto"
                       src="/assets/logo/Logo.svg"
                       alt="Your Company"
+                      width={48}
+                      height={48}
                     />
                     <h2 className="text-2xl font-bold text-center mb-2 mt-4">
                       Book a Free Trial

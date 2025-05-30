@@ -42,17 +42,21 @@ const footer = () => {
             <div className="flex gap-4">
               <Link href="/">
                 <Image
-                  src={"https://Image.icons8.com/color/48/instagram-new--v1.png"}
+                  src={"https://img.icons8.com/color/48/instagram-new--v1.png"}
                   alt="instagram"
                   className="footer-icons"
+                  width={48}
+                  height={48}
                 />
               </Link>
           
               <Link href="/">
                 <Image
-                  src={"https://Image.icons8.com/fluency/48/facebook-new.png"}
+                  src={"https://img.icons8.com/fluency/48/facebook-new.png"}
                   alt="facebook-new"
                   className="footer-icons"
+                  width={48}
+                  height={48}
                 />
               </Link>
               
@@ -100,7 +104,12 @@ const footer = () => {
                   type="submit"
                   className="p-1 focus:outline-none focus:shadow-outline"
                 >
-                  <Image src={"/assets/footer/inputIcon.svg"} alt="inputicon" />
+                  <Image 
+                   src={"/assets/footer/inputIcon.svg"} 
+                   alt="inputicon" 
+                    width={24}
+                    height={24}
+                  />
                 </button>
               </div>
             </div>
