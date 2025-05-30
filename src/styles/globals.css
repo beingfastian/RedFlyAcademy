@@ -113,7 +113,21 @@ html:not([data-scroll="0"]) .navbar {
     background-position: 0% 50%;
   }
 }
-
+@layer components {
+  .navbar-link {
+    @apply relative overflow-hidden;
+  }
+  
+  .navbar-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-full h-0.5 bg-purple-500 rounded-full;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-link:hover::after {
+    transform: translateX(0);
+  }
+}
 .bg-animated {
   background: linear-gradient(120deg, #ffdde1 0%, #fba7b7 50%, #fff1f1 100%);
   background-size: 200% 200%;

@@ -9,6 +9,7 @@ import Registerdialog from "./Registerdialog";
 import Contactus from "./Contactus";
 import { Students } from "..";
 import Image from "next/image";
+
 interface NavigationItem {
   name: string;
   href: string;
@@ -28,31 +29,56 @@ function classNames(...classes: string[]) {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
+
+  // Add scroll effect
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <Disclosure as="nav" className="bg-gradient-to-r from-pink-100 via-purple-50 to-pink-200 shadow-xl rounded-b-3xl navbar">
+    <Disclosure as="nav" 
+      className={classNames(
+        "fixed w-full z-50 transition-all duration-300",
+        scrolled 
+          ? "bg-white/90 backdrop-blur-lg shadow-lg" 
+          : "bg-gradient-to-r from-purple-100/90 via-pink-100/90 to-purple-100/90"
+      )}
+    >
       <>
         <div className="mx-auto max-w-7xl px-4 lg:px-12">
-          <div className="relative flex h-[110px] items-center justify-between">
+          <div className="relative flex h-20 items-center justify-between">
             {/* Logo Section */}
             <div className="flex items-center flex-1">
               <div className="flex-shrink-0 flex items-center">
                 {/* Large Logo */}
                 <Image
-                  className="hidden lg:block rounded-2xl border-4 border-purple-200 shadow-lg"
+                  className={classNames(
+                    "hidden lg:block transition-transform duration-300 hover:scale-105",
+                    scrolled ? "rounded-xl" : "rounded-2xl",
+                    "border-2 border-purple-300/50 shadow-lg"
+                  )}
                   src="/assets/logo/img.webp"
                   alt="Courses-Logo"
-                  width={120}  // Add this
-                  height={120} // Add this
-                  style={{ width: "120px", height: "120px", maxWidth: "600px", maxHeight: "600px" }}
+                  width={80}
+                  height={80}
+                  style={{ width: "80px", height: "80px" }}
                 />
                 <Image
-                  className="block lg:hidden rounded-xl border-2 border-purple-200 shadow"
+                  className={classNames(
+                    "block lg:hidden transition-transform duration-300 hover:scale-105",
+                    scrolled ? "rounded-lg" : "rounded-xl",
+                    "border-2 border-purple-300/50 shadow-md"
+                  )}
                   src="/assets/logo/img.webp"
                   alt="Courses-Logo"
-                  width={60}   // Add this
-                  height={60}  // Add this
-                  style={{ width: "60px", height: "60px", maxWidth: "600px", maxHeight: "600px" }}
+                  width={50}
+                  height={50}
+                  style={{ width: "50px", height: "50px" }}
                 />
               </div>
               {/* Desktop Navigation Links */}
@@ -63,10 +89,11 @@ const Navbar = () => {
                       key={item.name}
                       href={item.href}
                       className={classNames(
+                        "relative px-5 py-2 rounded-lg text-base font-medium tracking-wide transition-all duration-300 ease-in-out",
                         item.current
-                          ? "text-purple-700 font-bold border-b-4 border-purple-400 bg-white/70 shadow-inner"
-                          : "text-gray-700 hover:text-purple-700 hover:bg-white/50 hover:shadow px-4 transition-colors",
-                        "px-5 py-3 rounded-xl text-lg tracking-wide duration-150 ease-in-out"
+                          ? "text-purple-700 font-semibold after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-purple-500 after:rounded-full"
+                          : "text-gray-600 hover:text-purple-600",
+                        scrolled ? "hover:bg-purple-50/50" : "hover:bg-white/30"
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >
@@ -79,16 +106,21 @@ const Navbar = () => {
               </div>
             </div>
             {/* Right Side: Auth Buttons and Mobile Drawer */}
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-4">
               <Signdialog />
               <Registerdialog />
               {/* Mobile Drawer Icon */}
               <div className="block md:hidden">
                 <button
                   onClick={() => setIsOpen(true)}
-                  className="p-2 rounded-full bg-gradient-to-br from-purple-200 to-pink-300 hover:from-pink-300 hover:to-purple-200 shadow-lg focus:outline-none transition"
+                  className={classNames(
+                    "p-2 rounded-lg transition-all duration-300",
+                    scrolled
+                      ? "bg-purple-100 hover:bg-purple-200 text-purple-600"
+                      : "bg-white/30 hover:bg-white/50 text-purple-700"
+                  )}
                 >
-                  <Bars3Icon className="h-8 w-8 text-purple-700" aria-hidden="true" />
+                  <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
             </div>
