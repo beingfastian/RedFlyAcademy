@@ -23,43 +23,67 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html:not([data-scroll="0"]) .navbar {
-  position: fixed;
+/* Enhanced Navbar Styles - Updated for new design */
+html:not([data-scroll="0"]) .navbar,
+nav[class*="fixed"] {
+  position: fixed !important;
   top: 0;
   width: 100%;
-  background-color: white !important;
-  opacity: 1.9;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-  transition: 0.4s linear;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  z-index: 40;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.5) !important;
+  z-index: 50 !important;
 }
 
+/* Enhanced Banner Styles - Updated for gradient backgrounds */
 .banner-image {
+  /* Keep original background as fallback */
   background-image: url("/assets/banner/background.png");
   background-repeat: no-repeat;
   background-size: cover;
+  /* Add gradient overlay for enhanced design */
+  background: 
+    linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(219, 39, 119, 0.1) 50%, rgba(79, 70, 229, 0.1) 100%),
+    url("/assets/banner/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+/* Enhanced mobile banner */
 @media screen and (max-width: 640px) {
   .banner-image {
-    background-image: none !important;
-    background-color: #fcf5ef;
+    background-image: linear-gradient(135deg, 
+      rgba(147, 51, 234, 0.05) 0%, 
+      rgba(59, 130, 246, 0.05) 50%, 
+      rgba(79, 70, 229, 0.05) 100%) !important;
+    background-color: #f8fafc;
   }
 }
 
+/* Enhanced Newsletter Background */
 .bg-newsletter {
-  background-image: url("/assets/newsletter/hands.svg");
+  background: 
+    linear-gradient(135deg, rgba(251, 146, 60, 0.9) 0%, rgba(239, 68, 68, 0.9) 50%, rgba(219, 39, 119, 0.9) 100%),
+    url("/assets/newsletter/hands.svg");
   background-position: right;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+/* Enhanced Shadows */
 .boxshadow {
-  box-shadow: 0px 64px 64px -48px #f5eee8;
+  box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
+.mentorShadow {
+  box-shadow: 0 10px 25px -3px rgba(147, 51, 234, 0.1), 0 4px 6px -2px rgba(147, 51, 234, 0.05);
+}
+
+/* Keep existing utility classes */
 .position-green {
   top: 62%;
   right: 0%;
@@ -68,7 +92,7 @@ html:not([data-scroll="0"]) .navbar {
 }
 
 .bannerBorder {
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-left: 1px solid rgba(147, 51, 234, 0.2);
 }
 
 @media screen and (max-width: 640px) {
@@ -81,27 +105,25 @@ html:not([data-scroll="0"]) .navbar {
   white-space: nowrap;
 }
 
-.mentorShadow {
-  box-shadow: 0px 4px 20px rgba(110, 127, 185, 0.1);
-}
-
+/* Enhanced Interactive Elements */
 .footer-icons {
-  transition: 0.5s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-icons:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.1);
 }
 
 .space-links {
-  transition: 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .space-links:hover {
   letter-spacing: 1px;
+  transform: translateY(-1px);
 }
 
-/* Animated soft red background for About Us section */
+/* Enhanced Animations */
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;
@@ -113,13 +135,56 @@ html:not([data-scroll="0"]) .navbar {
     background-position: 0% 50%;
   }
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(147, 51, 234, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Enhanced Component Styles */
 @layer components {
   .navbar-link {
-    @apply relative overflow-hidden;
+    @apply relative overflow-hidden transition-all duration-300;
   }
   
   .navbar-link::after {
-    @apply content-[''] absolute bottom-0 left-0 w-full h-0.5 bg-purple-500 rounded-full;
+    @apply content-[''] absolute bottom-0 left-0 w-full h-0.5 rounded-full;
+    background: linear-gradient(90deg, #8B5CF6, #EC4899);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
   }
@@ -127,12 +192,156 @@ html:not([data-scroll="0"]) .navbar {
   .navbar-link:hover::after {
     transform: translateX(0);
   }
+
+  .btn-gradient {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+
+  .card-modern {
+    @apply bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent;
+  }
+
+  .bg-glass {
+    @apply bg-white/70 backdrop-blur-lg border border-white/50;
+  }
 }
+
+/* Enhanced Background Animations */
 .bg-animated {
-  background: linear-gradient(120deg, #ffdde1 0%, #fba7b7 50%, #fff1f1 100%);
-  background-size: 200% 200%;
-  animation: gradientMove 18s ease-in-out infinite;
-  filter: blur(0.5px);
-  opacity: 0.93;
-  z-index: 0;
+  background: linear-gradient(120deg, 
+    rgba(147, 51, 234, 0.1) 0%, 
+    rgba(59, 130, 246, 0.1) 25%,
+    rgba(219, 39, 119, 0.1) 50%, 
+    rgba(168, 85, 247, 0.1) 75%,
+    rgba(147, 51, 234, 0.1) 100%);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease-in-out infinite;
+}
+
+/* Utility Classes for Enhanced Design */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #8B5CF6, #EC4899);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7C3AED, #DB2777);
+}
+
+/* Focus Styles for Accessibility */
+*:focus {
+  outline: 2px solid #8B5CF6 !important;
+  outline-offset: 2px !important;
+}
+
+button:focus,
+a:focus {
+  outline: 2px solid #8B5CF6 !important;
+  outline-offset: 2px !important;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .fixed,
+  .sticky,
+  nav,
+  .bg-gradient-to-r,
+  .bg-gradient-to-br {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .bg-white\/70 {
+    background-color: white !important;
+  }
+  
+  .text-gray-600 {
+    color: #000 !important;
+  }
+  
+  .border-white\/50 {
+    border-color: #000 !important;
+  }
+}
+
+/* Dark Mode Preparations (for future enhancement) */
+@media (prefers-color-scheme: dark) {
+  /* You can add dark mode styles here later */
+}
+
+/* Fix for Safari backdrop-filter */
+@supports (-webkit-backdrop-filter: blur(10px)) {
+  .backdrop-blur-lg {
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  .backdrop-blur-sm {
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+/* Ensure content is visible above backgrounds */
+main > div:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix for overlapping content */
+.relative {
+  z-index: auto;
+}
+
+/* Ensure proper stacking context */
+section,
+.section {
+  position: relative;
+  z-index: 1;
 }

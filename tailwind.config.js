@@ -1,29 +1,52 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     colors: {
+      // Keep all default Tailwind colors
+      ...colors,
+      
+      // Your custom colors (these will override defaults where they match)
       transparent: "transparent",
       current: "currentColor",
       white: "#ffffff",
       black: "#000000",
+      
+      // Your custom color palette - using extend to add these as additional options
+      brand: {
+        purple: "#611F69",
+        lightgrey: "#8C8C8C", 
+        green: "#6B9F36",
+        lightpink: "#FCF6EF",
+        orange: "#F9CD92",
+        grey500: "#ECECEC",
+        bgpink: "#FCF5EF",
+        bgpurple: "#451F49",
+        emailbg: "#6a4c6d",
+        offwhite: "#FDFDFD",
+        offblack: "#333333",
+        red: "#FF605C",
+      },
+      
+      // Keep your existing custom colors as root level for backward compatibility
       purple: "#611F69",
       lightgrey: "#8C8C8C",
-      green: "#6B9F36",
+      green: "#6B9F36", 
       lightpink: "#FCF6EF",
       orange: "#F9CD92",
       grey500: "#ECECEC",
       bgpink: "#FCF5EF",
       bgpurple: "#451F49",
       emailbg: "#6a4c6d",
-      offwhite: " #FDFDFD",
+      offwhite: "#FDFDFD",
       offblack: "#333333",
       red: "#FF605C",
     },

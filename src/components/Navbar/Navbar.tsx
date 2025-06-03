@@ -1,13 +1,6 @@
-import { Disclosure } from "@headlessui/react";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import React, { useState, useEffect } from "react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import React from "react";
-import Drawer from "./Drawer";
-import Drawerdata from "./Drawerdata";
-import Signdialog from "./Signdialog";
-import Registerdialog from "./Registerdialog";
-import Contactus from "./Contactus";
-import { Students } from "..";
 import Image from "next/image";
 
 interface NavigationItem {
@@ -23,115 +16,136 @@ const navigation: NavigationItem[] = [
   { name: "Opening Hours", href: "#testimonial-section", current: false },
 ];
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+// Simple Contact Us Button
+const ContactButton = () => (
+  <button className="text-gray-700 hover:text-purple-600 px-4 py-2 rounded-lg transition-colors duration-200">
+    Contact Us
+  </button>
+);
+
+// Simple Students/Booking Button
+const BookingButton = () => (
+  <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-all duration-200 transform hover:scale-105">
+    Book Now
+  </button>
+);
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [scrolled, setScrolled] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Add scroll effect
-  React.useEffect(() => {
+  // Scroll effect
+  useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <Disclosure as="nav" 
-      className={classNames(
-        "fixed w-full z-50 transition-all duration-300",
+    <>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? "bg-white/90 backdrop-blur-lg shadow-lg" 
-          : "bg-gradient-to-r from-purple-100/90 via-pink-100/90 to-purple-100/90"
-      )}
-    >
-      <>
-        <div className="mx-auto max-w-7xl px-4 lg:px-12">
-          <div className="relative flex h-20 items-center justify-between">
+          ? "bg-white shadow-lg border-b border-gray-200" 
+          : "bg-white/90 backdrop-blur-sm"
+      }`}>
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="flex h-20 items-center justify-between">
+            
             {/* Logo Section */}
-            <div className="flex items-center flex-1">
-              <div className="flex-shrink-0 flex items-center">
-                {/* Large Logo */}
+            <div className="flex items-center">
+              <Link href="/" className="flex items-center space-x-3">
                 <Image
-                  className={classNames(
-                    "hidden lg:block transition-transform duration-300 hover:scale-105",
-                    scrolled ? "rounded-xl" : "rounded-2xl",
-                    "border-2 border-purple-300/50 shadow-lg"
-                  )}
+                  className="w-12 h-12 rounded-xl shadow-md"
                   src="/assets/logo/img.webp"
-                  alt="Courses-Logo"
-                  width={80}
-                  height={80}
-                  style={{ width: "80px", height: "80px" }}
+                  alt="Red Fly Academy"
+                  width={48}
+                  height={48}
                 />
-                <Image
-                  className={classNames(
-                    "block lg:hidden transition-transform duration-300 hover:scale-105",
-                    scrolled ? "rounded-lg" : "rounded-xl",
-                    "border-2 border-purple-300/50 shadow-md"
-                  )}
-                  src="/assets/logo/img.webp"
-                  alt="Courses-Logo"
-                  width={50}
-                  height={50}
-                  style={{ width: "50px", height: "50px" }}
-                />
-              </div>
-              {/* Desktop Navigation Links */}
-              <div className="hidden sm:ml-14 md:flex md:items-center">
-                <div className="flex space-x-8">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={classNames(
-                        "relative px-5 py-2 rounded-lg text-base font-medium tracking-wide transition-all duration-300 ease-in-out",
-                        item.current
-                          ? "text-purple-700 font-semibold after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-purple-500 after:rounded-full"
-                          : "text-gray-600 hover:text-purple-600",
-                        scrolled ? "hover:bg-purple-50/50" : "hover:bg-white/30"
-                      )}
-                      aria-current={item.current ? "page" : undefined}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                  <Contactus />
-                  <Students/>
+                <div>
+                  <h1 className="text-xl font-bold text-purple-600">
+                    Red Fly Academy
+                  </h1>
+                  <p className="text-xs text-gray-500">Online Education Platform</p>
+                </div>
+              </Link>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`px-4 py-2 rounded-lg text-base font-medium transition-all duration-200 ${
+                    item.current
+                      ? "text-purple-700 bg-purple-50 font-semibold"
+                      : "text-gray-700 hover:text-purple-600 hover:bg-purple-50"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              
+              <ContactButton />
+              <BookingButton />
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2 rounded-lg text-gray-600 hover:text-purple-600 hover:bg-purple-50 transition-colors duration-200"
+              >
+                {isOpen ? (
+                  <XMarkIcon className="h-6 w-6" />
+                ) : (
+                  <Bars3Icon className="h-6 w-6" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          {isOpen && (
+            <div className="md:hidden border-t border-gray-200 bg-white">
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-200 ${
+                      item.current
+                        ? "text-purple-700 bg-purple-50 font-semibold"
+                        : "text-gray-700 hover:text-purple-600 hover:bg-purple-50"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+                
+                <div className="border-t border-gray-200 pt-4 space-y-2">
+                  <button 
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-left px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-colors duration-200"
+                  >
+                    Contact Us
+                  </button>
+                  <button 
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-base font-medium transition-colors duration-200"
+                  >
+                    Book Now
+                  </button>
                 </div>
               </div>
             </div>
-            {/* Right Side: Auth Buttons and Mobile Drawer */}
-            <div className="flex items-center space-x-4">
-              <Signdialog />
-              <Registerdialog />
-              {/* Mobile Drawer Icon */}
-              <div className="block md:hidden">
-                <button
-                  onClick={() => setIsOpen(true)}
-                  className={classNames(
-                    "p-2 rounded-lg transition-all duration-300",
-                    scrolled
-                      ? "bg-purple-100 hover:bg-purple-200 text-purple-600"
-                      : "bg-white/30 hover:bg-white/50 text-purple-700"
-                  )}
-                >
-                  <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                </button>
-              </div>
-            </div>
-            {/* Drawer for Mobile */}
-            <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
-              <Drawerdata />
-            </Drawer>
-          </div>
+          )}
         </div>
-      </>
-    </Disclosure>
+      </nav>
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ import Students from "./Students/Students";
 import Newsletter from "./Newsletter/Newsletter";
 import Footer from "./Footer/Footer";
 import OpeningHours from "./Opening Hours/OpeningHours";
+import ProcessFlow from "./Steps/Steps";
 
 export {
   Banner,
@@ -18,4 +19,5 @@ export {
   Students,
   Newsletter,
   Footer,
+  ProcessFlow,  // Add this new export
 };
